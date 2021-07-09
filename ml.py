@@ -5,6 +5,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 df2 = pd.read_csv('./model/tmdb.csv', encoding='utf-8')
+df2 = df2.reset_index()
+
 
 class RECOMMEND():
     def __init__(self, vectorizer):
@@ -29,8 +31,8 @@ class RECOMMEND():
         return_df['Title'] = tit
         return_df['Year'] = dat
 
-        print(return_df)
+        return return_df
 
 recommend = RECOMMEND(TfidfVectorizer)
 df = recommend.get_recommendation("Harry Potter and the Half-Blood Prince")
-print(df)
+# print(df)
